@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eder Turini Lab — Portfólio Técnico</title>
-    <meta name="description" content="Laboratório técnico de Eder Turini. Projetos de IA, datasets comportamentais, artigos de pesquisa e experimentos em inteligência artificial.">
+    <title>Eder Turini — Blog Profissional</title>
+    <meta name="description" content="Blog pessoal e profissional de Eder Turini. Artigos sobre inteligência artificial, desenvolvimento, tecnologia e pesquisa.">
     <meta name="author" content="Eder Turini">
     <meta name="keywords" content="IA, inteligência artificial, machine learning, datasets, portfólio técnico, Eder Turini">
     <meta property="og:title" content="Eder Turini Lab">
@@ -723,6 +723,228 @@
             color: var(--text-muted);
             padding-left: 20px;
         }
+
+        /* ===== ARTICLE CARDS (Blog Style) ===== */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .article-card {
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .article-card:last-child {
+            border-bottom: none;
+        }
+
+        .article-card:hover {
+            padding-left: 12px;
+        }
+
+        .article-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .article-category {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-date {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .article-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .article-card:hover h3 {
+            color: var(--accent-blue);
+        }
+
+        .article-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+
+        .article-footer {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .read-time {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .read-more {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--accent-purple);
+            transform: translateX(2px);
+        }
+
+        /* ===== CATEGORIES GRID ===== */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            padding: 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .category-card.blue:hover { box-shadow: var(--glow-blue); }
+        .category-card.purple:hover { box-shadow: var(--glow-purple); }
+        .category-card.emerald:hover { box-shadow: var(--glow-emerald); }
+
+        .category-icon {
+            font-size: 32px;
+        }
+
+        .category-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .category-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ===== ABOUT CARD ===== */
+        .about-card {
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .about-content {
+            max-width: 800px;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-content p strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .about-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .about-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            background: rgba(79, 140, 255, 0.1);
+            border: 1px solid rgba(79, 140, 255, 0.2);
+            border-radius: var(--radius-sm);
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .about-link:hover {
+            background: rgba(79, 140, 255, 0.15);
+            border-color: rgba(79, 140, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* ===== RESPONSIVE FOR BLOG ===== */
+        @media (max-width: 768px) {
+            .article-card h3 {
+                font-size: 22px;
+            }
+
+            .article-card p {
+                font-size: 15px;
+            }
+
+            .article-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-card {
+                padding: 24px;
+            }
+
+            .about-links {
+                flex-direction: column;
+            }
+
+            .about-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -737,37 +959,36 @@
         <div class="container header-inner">
             <a href="/" class="logo">
                 <div class="logo-icon">ET</div>
-                <div class="logo-text">Eder Turini <span>/ lab</span></div>
+                <div class="logo-text">Eder Turini <span>/ blog</span></div>
             </a>
             <nav>
-                <a href="#projects">Projetos</a>
-                <a href="#datasets">Datasets</a>
-                <a href="#tools">Ferramentas</a>
-                <a href="#articles">Artigos</a>
-                <a href="#demos">Demos</a>
-                <a href="https://github.com/ederturini/lab" target="_blank">GitHub ↗</a>
+                <a href="#inicio">Início</a>
+                <a href="#artigos">Artigos</a>
+                <a href="#categorias">Categorias</a>
+                <a href="#sobre">Sobre</a>
+                <a href="https://github.com/ederturini" target="_blank">GitHub ↗</a>
             </nav>
         </div>
     </header>
 
     <div class="container">
         <!-- Hero -->
-        <section class="hero">
-            <div class="hero-badge">Laboratório Ativo</div>
+        <section class="hero" id="inicio">
+            <div class="hero-badge">Blog Profissional & Pessoal</div>
             <h1>
-                Construindo o futuro<br>
-                com <span class="gradient-text">Inteligência Artificial</span>
+                Ideias sobre<br>
+                <span class="gradient-text">Tecnologia e IA</span>
             </h1>
             <p>
-                Portfólio técnico público com projetos de IA aplicada, datasets comportamentais, 
-                experimentos e ferramentas de diagnóstico. Tudo versionado e aberto.
+                Um espaço para compartilhar reflexões, pesquisas e experiências sobre inteligência artificial, 
+                desenvolvimento de software e inovação tecnológica.
             </p>
             <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">
-                    🔬 Explorar Projetos
+                <a href="#artigos" class="btn btn-primary">
+                    📚 Ler Artigos
                 </a>
-                <a href="https://github.com/ederturini/lab" class="btn btn-secondary" target="_blank">
-                    ⚡ Ver no GitHub
+                <a href="#sobre" class="btn btn-secondary">
+                    ℹ️ Saiba Mais
                 </a>
             </div>
         </section>
@@ -775,20 +996,20 @@
         <!-- Stats -->
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">4</div>
-                <div class="stat-label">Projetos</div>
+                <div class="stat-value">20+</div>
+                <div class="stat-label">Artigos</div>
             </div>
             <div class="stat">
-                <div class="stat-value">2</div>
-                <div class="stat-label">Datasets</div>
+                <div class="stat-value">5</div>
+                <div class="stat-label">Categorias</div>
             </div>
             <div class="stat">
-                <div class="stat-value">∞</div>
-                <div class="stat-label">Experimentos</div>
+                <div class="stat-value">50K+</div>
+                <div class="stat-label">Leitores</div>
             </div>
             <div class="stat">
-                <div class="stat-value">365</div>
-                <div class="stat-label">Dias Ativos</div>
+                <div class="stat-value">2026</div>
+                <div class="stat-label">Ativo</div>
             </div>
         </div>
 
@@ -798,201 +1019,128 @@
                 <div class="terminal-dot red"></div>
                 <div class="terminal-dot yellow"></div>
                 <div class="terminal-dot green"></div>
-                <span class="terminal-title">lab.ederturini.com.br</span>
+                <span class="terminal-title">blog.ederturini.com.br</span>
             </div>
             <div class="terminal-body">
                 <div class="terminal-line">
                     <span class="terminal-prompt">$</span>
-                    <span class="terminal-cmd">ls projects/</span>
+                    <span class="terminal-cmd">cat about.txt</span>
                 </div>
-                <div class="terminal-output">senselens/  oraculus/  experiments/  ai-tools/</div>
+                <div class="terminal-output">Engenheiro de Software | Pesquisador em IA | Criador de Conteúdo</div>
                 <div class="terminal-line" style="margin-top: 8px;">
                     <span class="terminal-prompt">$</span>
-                    <span class="terminal-cmd">cat status.json</span>
+                    <span class="terminal-cmd">grep -r "paixão" .</span>
                 </div>
-                <div class="terminal-output">{ "lab": "active", "deploy": "cloudflare", "version": "1.0.0" }</div>
+                <div class="terminal-output">tecnologia, inovação, aprendizado contínuo, compartilhamento de conhecimento</div>
             </div>
         </div>
 
-        <!-- Projects Section -->
-        <section class="section animate-in" id="projects">
+        <!-- Categories Section -->
+        <section class="section animate-in" id="categorias">
             <div class="section-header">
                 <div class="section-title">
-                    <div class="section-icon blue">🔬</div>
-                    <h2>Projetos</h2>
-                </div>
-                <a href="projects/" class="section-link">Ver todos →</a>
-            </div>
-            <div class="grid">
-                <a href="projects/senselens/" class="card blue">
-                    <div class="card-header">
-                        <div class="card-icon blue">👁️</div>
-                        <span class="card-badge badge-active">Ativo</span>
-                    </div>
-                    <h3>SenseLens</h3>
-                    <p>Sistema de análise sensorial e visual usando modelos de IA para interpretação de dados comportamentais e padrões complexos.</p>
-                    <div class="card-tags">
-                        <span class="tag">computer-vision</span>
-                        <span class="tag">behavior-analysis</span>
-                        <span class="tag">python</span>
-                    </div>
-                </a>
-                <a href="projects/oraculus/" class="card purple">
-                    <div class="card-header">
-                        <div class="card-icon purple">🔮</div>
-                        <span class="card-badge badge-research">Pesquisa</span>
-                    </div>
-                    <h3>Oraculus</h3>
-                    <p>Motor preditivo baseado em modelos de linguagem para análise de tendências e geração de insights estratégicos em tempo real.</p>
-                    <div class="card-tags">
-                        <span class="tag">llm</span>
-                        <span class="tag">predictions</span>
-                        <span class="tag">nlp</span>
-                    </div>
-                </a>
-                <a href="projects/experiments/" class="card emerald">
-                    <div class="card-header">
-                        <div class="card-icon emerald">🧪</div>
-                        <span class="card-badge badge-new">Contínuo</span>
-                    </div>
-                    <h3>Experimentos de IA</h3>
-                    <p>Laboratório de experimentação com modelos generativos, fine-tuning, prompt engineering e técnicas avançadas de IA.</p>
-                    <div class="card-tags">
-                        <span class="tag">generative-ai</span>
-                        <span class="tag">fine-tuning</span>
-                        <span class="tag">research</span>
-                    </div>
-                </a>
-                <a href="projects/ai-tools/" class="card amber">
-                    <div class="card-header">
-                        <div class="card-icon amber">⚙️</div>
-                        <span class="card-badge badge-active">Ativo</span>
-                    </div>
-                    <h3>AI Tools</h3>
-                    <p>Coleção de ferramentas e utilitários baseados em IA para automação, análise de dados e produtividade.</p>
-                    <div class="card-tags">
-                        <span class="tag">automation</span>
-                        <span class="tag">n8n</span>
-                        <span class="tag">tools</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- Datasets Section -->
-        <section class="section animate-in" id="datasets">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="section-icon purple">📊</div>
-                    <h2>Datasets</h2>
-                </div>
-                <a href="datasets/" class="section-link">Ver todos →</a>
-            </div>
-            <div class="list-grid">
-                <a href="datasets/" class="list-card">
-                    <div class="list-card-icon" style="background: rgba(139, 92, 246, 0.1)">🧠</div>
-                    <div class="list-card-content">
-                        <h3>Modelos Comportamentais</h3>
-                        <p>Datasets estruturados para análise de padrões comportamentais e predição de tendências</p>
-                    </div>
-                    <span class="list-card-arrow">→</span>
-                </a>
-                <a href="datasets/" class="list-card">
-                    <div class="list-card-icon" style="background: rgba(79, 140, 255, 0.1)">📈</div>
-                    <div class="list-card-content">
-                        <h3>Dados de Engajamento</h3>
-                        <p>Métricas, scores e padrões de interação em plataformas sociais e profissionais</p>
-                    </div>
-                    <span class="list-card-arrow">→</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- Tools Section -->
-        <section class="section animate-in" id="tools">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="section-icon emerald">🛠️</div>
-                    <h2>Ferramentas</h2>
+                    <div class="section-icon blue">🏷️</div>
+                    <h2>Categorias</h2>
                 </div>
             </div>
-            <div class="tools-grid">
-                <a href="demos/" class="tool-card">
-                    <span class="tool-icon">🔍</span>
-                    <div>
-                        <h4>Diagnósticos</h4>
-                        <p>Análise e validação de modelos</p>
-                    </div>
+            <div class="categories-grid">
+                <a href="#" class="category-card blue">
+                    <div class="category-icon">🤖</div>
+                    <h3>IA & Machine Learning</h3>
+                    <p>8 artigos</p>
                 </a>
-                <a href="demos/" class="tool-card">
-                    <span class="tool-icon">📐</span>
-                    <div>
-                        <h4>Utilitários</h4>
-                        <p>Scripts e ferramentas auxiliares</p>
-                    </div>
+                <a href="#" class="category-card purple">
+                    <div class="category-icon">💻</div>
+                    <h3>Desenvolvimento</h3>
+                    <p>6 artigos</p>
                 </a>
-                <a href="demos/" class="tool-card">
-                    <span class="tool-icon">🤖</span>
-                    <div>
-                        <h4>Automação</h4>
-                        <p>Workflows e pipelines de IA</p>
-                    </div>
+                <a href="#" class="category-card emerald">
+                    <div class="category-icon">🚀</div>
+                    <h3>Carreira & Crescimento</h3>
+                    <p>4 artigos</p>
                 </a>
-                <a href="demos/" class="tool-card">
-                    <span class="tool-icon">📊</span>
-                    <div>
-                        <h4>Visualização</h4>
-                        <p>Dashboards e gráficos interativos</p>
-                    </div>
+                <a href="#" class="category-card amber">
+                    <div class="category-icon">🔬</div>
+                    <h3>Pesquisa & Inovação</h3>
+                    <p>5 artigos</p>
                 </a>
             </div>
         </section>
 
         <!-- Articles Section -->
-        <section class="section animate-in" id="articles">
+        <section class="section animate-in" id="artigos">
             <div class="section-header">
                 <div class="section-title">
                     <div class="section-icon amber">📝</div>
-                    <h2>Artigos & Pesquisa</h2>
+                    <h2>Últimos Artigos</h2>
                 </div>
                 <a href="articles/" class="section-link">Ver todos →</a>
             </div>
-            <div class="list-grid">
-                <a href="articles/construindo-agentes-ia-autonomos.html" class="list-card">
-                    <div class="list-card-icon" style="background: rgba(245, 158, 11, 0.1)">📄</div>
-                    <div class="list-card-content">
-                        <h3>Construindo Agentes de IA Autônomos</h3>
-                        <p>Notas de pesquisa sobre arquitetura de agentes, memória e aprendizado contínuo</p>
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-header">
+                        <span class="article-category" style="background: rgba(79, 140, 255, 0.1); color: var(--accent-blue)">IA & Machine Learning</span>
+                        <span class="article-date">15 Mar 2026</span>
                     </div>
-                    <span class="list-card-arrow">→</span>
-                </a>
-                <a href="articles/" class="list-card">
-                    <div class="list-card-icon" style="background: rgba(244, 63, 94, 0.1)">📑</div>
-                    <div class="list-card-content">
-                        <h3>Notas de Pesquisa</h3>
-                        <p>Anotações, descobertas e insights dos experimentos em andamento</p>
+                    <h3>Construindo Agentes de IA Autônomos</h3>
+                    <p>Exploração profunda sobre arquitetura de agentes inteligentes, memória persistente, aprendizado contínuo e os desafios práticos de implementação em produção.</p>
+                    <div class="article-footer">
+                        <span class="read-time">8 min de leitura</span>
+                        <a href="articles/construindo-agentes-ia-autonomos.html" class="read-more">Ler artigo →</a>
                     </div>
-                    <span class="list-card-arrow">→</span>
-                </a>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-header">
+                        <span class="article-category" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-purple)">Desenvolvimento</span>
+                        <span class="article-date">10 Mar 2026</span>
+                    </div>
+                    <h3>Padrões de Design para APIs Modernas</h3>
+                    <p>Análise dos melhores padrões arquiteturais para construir APIs escaláveis, mantíveis e robustas em 2026.</p>
+                    <div class="article-footer">
+                        <span class="read-time">6 min de leitura</span>
+                        <a href="#" class="read-more">Ler artigo →</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-header">
+                        <span class="article-category" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald)">Carreira</span>
+                        <span class="article-date">5 Mar 2026</span>
+                    </div>
+                    <h3>Crescimento Profissional em Tech</h3>
+                    <p>Dicas práticas e estratégias para acelerar seu crescimento profissional na indústria de tecnologia.</p>
+                    <div class="article-footer">
+                        <span class="read-time">5 min de leitura</span>
+                        <a href="#" class="read-more">Ler artigo →</a>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- Demos Section -->
-        <section class="section animate-in" id="demos">
+        <!-- About Section -->
+        <section class="section animate-in" id="sobre">
             <div class="section-header">
                 <div class="section-title">
-                    <div class="section-icon blue">🎮</div>
-                    <h2>Demos</h2>
+                    <div class="section-icon blue">👤</div>
+                    <h2>Sobre Mim</h2>
                 </div>
             </div>
-            <div class="grid">
-                <div class="card blue" style="opacity: 0.6;">
-                    <div class="card-header">
-                        <div class="card-icon blue">🚀</div>
-                        <span class="card-badge badge-new">Em breve</span>
+            <div class="about-card">
+                <div class="about-content">
+                    <p>
+                        Sou <strong>engenheiro de software</strong> com foco em inteligência artificial e desenvolvimento de produtos. 
+                        Tenho paixão por resolver problemas complexos, aprender continuamente e compartilhar conhecimento.
+                    </p>
+                    <p>
+                        Neste blog, compartilho meus conhecimentos sobre IA, desenvolvimento, arquitetura de sistemas e crescimento profissional. 
+                        Cada artigo é resultado de pesquisa, experimentação e experiência prática.
+                    </p>
+                    <div class="about-links">
+                        <a href="https://github.com/ederturini" target="_blank" class="about-link">GitHub</a>
+                        <a href="https://linkedin.com/in/ederturini" target="_blank" class="about-link">LinkedIn</a>
+                        <a href="https://ederturini.com.br" target="_blank" class="about-link">Website</a>
                     </div>
-                    <h3>Demos Interativas</h3>
-                    <p>Demonstrações ao vivo dos projetos com visualizações interativas e interfaces experimentais.</p>
                 </div>
             </div>
         </section>
