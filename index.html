@@ -1,115 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eder Turini Lab — Portfólio Técnico</title>
-    <meta name="description" content="Laboratório técnico de Eder Turini. Projetos de IA, datasets comportamentais, artigos de pesquisa e experimentos em inteligência artificial.">
+    <title>Lab — Eder Turini</title>
+    <meta name="description"
+        content="Laboratório técnico de Eder Turini. Projetos de IA, datasets comportamentais, artigos de pesquisa e experimentos em inteligência artificial.">
     <meta name="author" content="Eder Turini">
-    <meta name="keywords" content="IA, inteligência artificial, machine learning, datasets, portfólio técnico, Eder Turini">
-    <meta property="og:title" content="Eder Turini Lab">
+    <meta name="keywords"
+        content="IA, inteligência artificial, machine learning, datasets, portfólio técnico, Eder Turini">
+    <meta property="og:title" content="Lab — Eder Turini">
     <meta property="og:description" content="Laboratório técnico público com projetos de IA, datasets e pesquisa.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lab.ederturini.com.br">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
-        /* ===== DESIGN SYSTEM ===== */
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #16161f;
-            --bg-card-hover: #1c1c28;
-            --border: #1e1e2e;
-            --border-hover: #2a2a3e;
-            --text-primary: #e8e8f0;
-            --text-secondary: #8888a0;
-            --text-muted: #55556a;
-            --accent-blue: #4f8cff;
-            --accent-purple: #8b5cf6;
-            --accent-emerald: #10b981;
-            --accent-amber: #f59e0b;
-            --accent-rose: #f43f5e;
-            --gradient-blue: linear-gradient(135deg, #4f8cff, #3b6fdb);
-            --gradient-purple: linear-gradient(135deg, #8b5cf6, #6d3fd0);
-            --gradient-emerald: linear-gradient(135deg, #10b981, #059669);
-            --gradient-amber: linear-gradient(135deg, #f59e0b, #d97706);
-            --glow-blue: 0 0 30px rgba(79, 140, 255, 0.15);
-            --glow-purple: 0 0 30px rgba(139, 92, 246, 0.15);
-            --glow-emerald: 0 0 30px rgba(16, 185, 129, 0.15);
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --bg: #0a0a0a;
+            --bg-elevated: #111111;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --border: #1f1f1f;
+            --border-hover: #2a2a2a;
+            --gold: #c9a55a;
+            --gold-light: #dbb96c;
+            --gold-dim: #8a7340;
+            --gold-bg: rgba(201, 165, 90, 0.06);
+            --gold-border: rgba(201, 165, 90, 0.15);
+            --text: #e8e4de;
+            --text-secondary: #8a8478;
+            --text-muted: #5a5650;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
             --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        html { scroll-behavior: smooth; }
-        
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: var(--font-sans);
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.7;
             min-height: 100vh;
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ===== ANIMATED BACKGROUND ===== */
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(79, 140, 255, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.02) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .bg-grid::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
-        }
-
-        /* ===== FLOATING ORBS ===== */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .orb-1 { width: 400px; height: 400px; background: rgba(79, 140, 255, 0.08); top: 10%; left: -5%; animation-delay: 0s; }
-        .orb-2 { width: 350px; height: 350px; background: rgba(139, 92, 246, 0.08); top: 60%; right: -5%; animation-delay: -7s; }
-        .orb-3 { width: 300px; height: 300px; background: rgba(16, 185, 129, 0.06); bottom: 10%; left: 30%; animation-delay: -14s; }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -30px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(20px, 10px) scale(1.02); }
+        ::selection {
+            background: rgba(201, 165, 90, 0.25);
+            color: var(--text);
         }
 
         /* ===== LAYOUT ===== */
         .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* ===== HEADER ===== */
@@ -117,10 +80,10 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: 16px 0;
-            backdrop-filter: blur(20px) saturate(1.5);
-            -webkit-backdrop-filter: blur(20px) saturate(1.5);
-            background: rgba(10, 10, 15, 0.7);
+            padding: 20px 0;
+            backdrop-filter: blur(20px) saturate(1.4);
+            -webkit-backdrop-filter: blur(20px) saturate(1.4);
+            background: rgba(10, 10, 10, 0.8);
             border-bottom: 1px solid var(--border);
         }
 
@@ -131,123 +94,91 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
             text-decoration: none;
-            color: var(--text-primary);
-        }
-
-        .logo-icon {
-            width: 38px;
-            height: 38px;
-            background: var(--gradient-blue);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 700;
-            color: white;
-            box-shadow: var(--glow-blue);
-        }
-
-        .logo-text {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text span {
-            color: var(--text-muted);
+            color: var(--text);
+            font-family: var(--font-display);
+            font-size: 20px;
             font-weight: 400;
+            letter-spacing: -0.3px;
+        }
+
+        .logo em {
+            color: var(--gold);
+            font-style: italic;
         }
 
         nav {
             display: flex;
-            gap: 8px;
+            gap: 4px;
         }
 
         nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 400;
             padding: 8px 16px;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             transition: var(--transition);
+            letter-spacing: 0.2px;
         }
 
         nav a:hover {
-            color: var(--text-primary);
-            background: rgba(255,255,255,0.05);
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.04);
         }
 
         /* ===== HERO ===== */
         .hero {
             padding: 100px 0 80px;
-            text-align: center;
+            max-width: 680px;
         }
 
-        .hero-badge {
+        .hero-label {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(79, 140, 255, 0.08);
-            border: 1px solid rgba(79, 140, 255, 0.15);
-            border-radius: 100px;
-            font-size: 13px;
+            gap: 10px;
+            font-size: 12px;
             font-weight: 500;
-            color: var(--accent-blue);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
             margin-bottom: 32px;
-            animation: fadeInUp 0.8s ease;
         }
 
-        .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--accent-emerald);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+        .hero-label span {
+            color: var(--gold-dim);
         }
 
         .hero h1 {
-            font-size: clamp(40px, 6vw, 72px);
-            font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 1.1;
+            font-family: var(--font-body);
+            font-size: clamp(32px, 5vw, 46px);
+            font-weight: 400;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
             margin-bottom: 24px;
-            animation: fadeInUp 0.8s ease 0.1s both;
+            color: var(--text);
         }
 
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-emerald));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 em {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
         }
 
-        .hero p {
-            font-size: 18px;
+        .hero-desc {
+            font-size: 15px;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
             line-height: 1.8;
-            animation: fadeInUp 0.8s ease 0.2s both;
+            max-width: 520px;
+            margin-bottom: 40px;
         }
 
         .hero-actions {
             display: flex;
-            gap: 16px;
-            justify-content: center;
-            animation: fadeInUp 0.8s ease 0.3s both;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -255,228 +186,135 @@
             align-items: center;
             gap: 8px;
             padding: 12px 28px;
-            border-radius: var(--radius-sm);
-            font-size: 15px;
-            font-weight: 600;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
             text-decoration: none;
             transition: var(--transition);
             cursor: pointer;
             border: none;
+            letter-spacing: 0.2px;
         }
 
-        .btn-primary {
-            background: var(--gradient-blue);
-            color: white;
-            box-shadow: var(--glow-blue);
+        .btn-gold {
+            background: var(--gold);
+            color: #0a0a0a;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(79, 140, 255, 0.25);
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(201, 165, 90, 0.15);
         }
 
-        .btn-secondary {
-            background: rgba(255,255,255,0.05);
-            color: var(--text-primary);
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
             border: 1px solid var(--border);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.08);
+        .btn-ghost:hover {
+            color: var(--text);
             border-color: var(--border-hover);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.03);
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== STATS BAR ===== */
+        /* ===== STATS ===== */
         .stats {
             display: flex;
-            justify-content: center;
-            gap: 48px;
-            padding: 32px 0;
-            margin-bottom: 60px;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .stat {
-            text-align: center;
+            gap: 56px;
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 80px;
         }
 
         .stat-value {
-            font-size: 28px;
-            font-weight: 700;
-            font-family: var(--font-mono);
-            color: var(--text-primary);
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .stat-value span {
+            color: var(--gold);
         }
 
         .stat-label {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 4px;
         }
 
         /* ===== SECTIONS ===== */
         .section {
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
 
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 32px;
+        .section-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
         }
 
         .section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 400;
+            letter-spacing: -0.3px;
+            margin-bottom: 48px;
         }
 
-        .section-title h2 {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
         }
 
-        .section-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        .section-icon.blue { background: rgba(79, 140, 255, 0.1); }
-        .section-icon.purple { background: rgba(139, 92, 246, 0.1); }
-        .section-icon.emerald { background: rgba(16, 185, 129, 0.1); }
-        .section-icon.amber { background: rgba(245, 158, 11, 0.1); }
-
-        .section-link {
-            font-size: 14px;
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .section-link:hover {
-            color: var(--accent-purple);
-        }
-
-        /* ===== PROJECT CARDS ===== */
-        .grid {
+        /* ===== PROJECTS GRID ===== */
+        .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
         }
 
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px;
+            border-radius: 12px;
+            padding: 32px;
             transition: var(--transition);
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            opacity: 0;
-            transition: var(--transition);
         }
 
         .card:hover {
             background: var(--bg-card-hover);
             border-color: var(--border-hover);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
         }
 
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card.blue::before { background: var(--gradient-blue); }
-        .card.purple::before { background: var(--gradient-purple); }
-        .card.emerald::before { background: var(--gradient-emerald); }
-        .card.amber::before { background: linear-gradient(135deg, var(--accent-amber), var(--accent-rose)); }
-
-        .card:hover {
-            box-shadow: var(--glow-blue);
-        }
-
-        .card.purple:hover { box-shadow: var(--glow-purple); }
-        .card.emerald:hover { box-shadow: var(--glow-emerald); }
-
-        .card-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
+        .card-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold-dim);
             margin-bottom: 16px;
         }
 
-        .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-        }
-
-        .card-icon.blue { background: rgba(79, 140, 255, 0.1); }
-        .card-icon.purple { background: rgba(139, 92, 246, 0.1); }
-        .card-icon.emerald { background: rgba(16, 185, 129, 0.1); }
-        .card-icon.amber { background: rgba(245, 158, 11, 0.1); }
-
-        .card-badge {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 100px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .badge-active {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--accent-emerald);
-        }
-
-        .badge-research {
-            background: rgba(139, 92, 246, 0.1);
-            color: var(--accent-purple);
-        }
-
-        .badge-new {
-            background: rgba(79, 140, 255, 0.1);
-            color: var(--accent-blue);
-        }
-
         .card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.3px;
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            letter-spacing: -0.2px;
         }
 
         .card p {
@@ -490,100 +328,149 @@
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
         .tag {
             font-family: var(--font-mono);
             font-size: 11px;
             padding: 4px 10px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-muted);
+            background: var(--gold-bg);
+            border: 1px solid var(--gold-border);
+            border-radius: 4px;
+            color: var(--gold-dim);
         }
 
-        /* ===== MINIMAL CARDS (datasets, articles) ===== */
-        .list-card {
+        /* ===== LIST ITEMS ===== */
+        .list-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .list-item {
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 20px 24px;
+            justify-content: space-between;
+            padding: 24px 28px;
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            transition: var(--transition);
             text-decoration: none;
             color: inherit;
+            transition: var(--transition);
         }
 
-        .list-card:hover {
+        .list-item:hover {
             background: var(--bg-card-hover);
-            border-color: var(--border-hover);
-            transform: translateX(4px);
         }
 
-        .list-card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .list-card-content {
+        .list-item-content {
             flex: 1;
         }
 
-        .list-card h3 {
+        .list-item h3 {
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 500;
             margin-bottom: 4px;
         }
 
-        .list-card p {
+        .list-item p {
             font-size: 13px;
             color: var(--text-muted);
         }
 
-        .list-card-arrow {
+        .list-item-meta {
+            font-family: var(--font-mono);
+            font-size: 11px;
             color: var(--text-muted);
-            font-size: 18px;
+            text-align: right;
+        }
+
+        .list-item-arrow {
+            color: var(--text-muted);
+            margin-left: 20px;
+            font-size: 16px;
             transition: var(--transition);
         }
 
-        .list-card:hover .list-card-arrow {
-            color: var(--accent-blue);
-            transform: translateX(4px);
+        .list-item:hover .list-item-arrow {
+            color: var(--gold);
+            transform: translateX(3px);
         }
 
-        .list-grid {
+        /* ===== PHILOSOPHY / HIGHLIGHT SECTION ===== */
+        .highlight-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 100px;
+        }
+
+        .highlight-text h2 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .highlight-text h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .highlight-text p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .highlight-features {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px 22px;
+        }
+
+        .feature-item h4 {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
         /* ===== TOOLS GRID ===== */
-        .tools-grid {
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 16px;
         }
 
         .tool-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 18px 20px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            transition: var(--transition);
+            border-radius: 10px;
+            padding: 24px;
             text-decoration: none;
             color: inherit;
+            transition: var(--transition);
         }
 
         .tool-card:hover {
@@ -593,11 +480,13 @@
 
         .tool-icon {
             font-size: 24px;
+            margin-bottom: 14px;
         }
 
         .tool-card h4 {
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 500;
+            margin-bottom: 4px;
         }
 
         .tool-card p {
@@ -605,21 +494,51 @@
             color: var(--text-muted);
         }
 
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+            background: var(--bg-elevated);
+            border-radius: 16px;
+            margin-bottom: 80px;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
         /* ===== FOOTER ===== */
         footer {
             border-top: 1px solid var(--border);
-            padding: 40px 0;
-            margin-top: 40px;
+            padding: 32px 0;
         }
 
         .footer-inner {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .footer-text {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
@@ -629,153 +548,127 @@
         }
 
         .footer-links a {
-            font-size: 13px;
-            color: var(--text-secondary);
+            font-size: 12px;
+            color: var(--text-muted);
             text-decoration: none;
             transition: var(--transition);
         }
 
         .footer-links a:hover {
-            color: var(--accent-blue);
+            color: var(--gold);
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .header-inner { flex-direction: column; gap: 12px; }
-            nav { flex-wrap: wrap; justify-content: center; }
-            .hero { padding: 60px 0 40px; }
-            .stats { flex-wrap: wrap; gap: 24px; }
-            .grid { grid-template-columns: 1fr; }
-            .tools-grid { grid-template-columns: 1fr; }
-            .hero-actions { flex-direction: column; align-items: center; }
-            .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+            .container {
+                padding: 0 20px;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 60px 0 48px;
+            }
+
+            .stats {
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
         }
 
-        /* ===== SCROLL ANIMATIONS ===== */
-        .animate-in {
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(16px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
-        .animate-in.visible {
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* ===== TERMINAL WINDOW ===== */
-        .terminal {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            margin: 40px 0;
-            animation: fadeInUp 0.8s ease 0.5s both;
-        }
-
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 16px;
-            background: rgba(255,255,255,0.02);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .terminal-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        .terminal-dot.red { background: #ff5f57; }
-        .terminal-dot.yellow { background: #febc2e; }
-        .terminal-dot.green { background: #28c840; }
-
-        .terminal-title {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-left: 8px;
-        }
-
-        .terminal-body {
-            padding: 20px;
-            font-family: var(--font-mono);
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .terminal-line {
-            display: flex;
-            gap: 8px;
-        }
-
-        .terminal-prompt {
-            color: var(--accent-emerald);
-            user-select: none;
-        }
-
-        .terminal-cmd {
-            color: var(--text-secondary);
-        }
-
-        .terminal-output {
-            color: var(--text-muted);
-            padding-left: 20px;
-        }
     </style>
 </head>
+
 <body>
-    <!-- Background Effects -->
-    <div class="bg-grid"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
 
     <!-- Header -->
     <header>
         <div class="container header-inner">
-            <a href="/" class="logo">
-                <div class="logo-icon">ET</div>
-                <div class="logo-text">Eder Turini <span>/ lab</span></div>
-            </a>
+            <a href="/" class="logo">Eder Turini <em>/ lab</em></a>
             <nav>
-                <a href="#projects">Projetos</a>
+                <a href="#expertise">Projetos</a>
                 <a href="#datasets">Datasets</a>
                 <a href="#tools">Ferramentas</a>
                 <a href="#articles">Artigos</a>
-                <a href="#demos">Demos</a>
+                <a href="https://ederturini.com.br">Site Principal</a>
                 <a href="https://github.com/ederturini/lab" target="_blank">GitHub ↗</a>
             </nav>
         </div>
     </header>
 
     <div class="container">
+
         <!-- Hero -->
-        <section class="hero">
-            <div class="hero-badge">Laboratório Ativo</div>
+        <section class="hero fade-in">
+            <div class="hero-label">
+                Laboratório <span>·</span> IA <span>·</span> Experimentação
+            </div>
             <h1>
-                Construindo o futuro<br>
-                com <span class="gradient-text">Inteligência Artificial</span>
+                Projetos, dados e percepção<br>
+                em <em>inteligência aplicada.</em>
             </h1>
-            <p>
-                Portfólio técnico público com projetos de IA aplicada, datasets comportamentais, 
-                experimentos e ferramentas de diagnóstico. Tudo versionado e aberto.
+            <p class="hero-desc">
+                Portfólio técnico público com projetos de IA, datasets comportamentais,
+                artigos de pesquisa e ferramentas de automação. Tudo versionado,
+                documentado e aberto.
             </p>
             <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">
-                    🔬 Explorar Projetos
-                </a>
-                <a href="https://github.com/ederturini/lab" class="btn btn-secondary" target="_blank">
-                    ⚡ Ver no GitHub
-                </a>
+                <a href="#expertise" class="btn btn-gold">Explorar projetos</a>
+                <a href="https://github.com/ederturini/lab" class="btn btn-ghost" target="_blank">GitHub</a>
             </div>
         </section>
 
         <!-- Stats -->
-        <div class="stats">
+        <div class="stats fade-in">
             <div class="stat">
-                <div class="stat-value">4</div>
+                <div class="stat-value">4<span>+</span></div>
                 <div class="stat-label">Projetos</div>
             </div>
             <div class="stat">
@@ -783,234 +676,220 @@
                 <div class="stat-label">Datasets</div>
             </div>
             <div class="stat">
-                <div class="stat-value">∞</div>
+                <div class="stat-value">50<span>+</span></div>
                 <div class="stat-label">Experimentos</div>
             </div>
             <div class="stat">
-                <div class="stat-value">365</div>
-                <div class="stat-label">Dias Ativos</div>
+                <div class="stat-value">∞</div>
+                <div class="stat-label">Em construção</div>
             </div>
         </div>
 
-        <!-- Terminal -->
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-dot red"></div>
-                <div class="terminal-dot yellow"></div>
-                <div class="terminal-dot green"></div>
-                <span class="terminal-title">lab.ederturini.com.br</span>
-            </div>
-            <div class="terminal-body">
-                <div class="terminal-line">
-                    <span class="terminal-prompt">$</span>
-                    <span class="terminal-cmd">ls projects/</span>
-                </div>
-                <div class="terminal-output">senselens/  oraculus/  experiments/  ai-tools/</div>
-                <div class="terminal-line" style="margin-top: 8px;">
-                    <span class="terminal-prompt">$</span>
-                    <span class="terminal-cmd">cat status.json</span>
-                </div>
-                <div class="terminal-output">{ "lab": "active", "deploy": "cloudflare", "version": "1.0.0" }</div>
-            </div>
-        </div>
-
-        <!-- Projects Section -->
-        <section class="section animate-in" id="projects">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="section-icon blue">🔬</div>
-                    <h2>Projetos</h2>
-                </div>
-                <a href="projects/" class="section-link">Ver todos →</a>
-            </div>
-            <div class="grid">
-                <a href="projects/senselens/" class="card blue">
-                    <div class="card-header">
-                        <div class="card-icon blue">👁️</div>
-                        <span class="card-badge badge-active">Ativo</span>
-                    </div>
+        <!-- Expertise / Projects -->
+        <section class="section fade-in" id="expertise">
+            <div class="section-label">// O que faço</div>
+            <h2 class="section-title">Expertise</h2>
+            <div class="grid-2">
+                <a href="projects/senselens/" class="card">
+                    <div class="card-label">Computer Vision · AI</div>
                     <h3>SenseLens</h3>
-                    <p>Sistema de análise sensorial e visual usando modelos de IA para interpretação de dados comportamentais e padrões complexos.</p>
+                    <p>
+                        Sistema de análise sensorial e visual usando modelos de IA para
+                        interpretação de dados comportamentais e identificação de padrões
+                        complexos em tempo real.
+                    </p>
                     <div class="card-tags">
                         <span class="tag">computer-vision</span>
-                        <span class="tag">behavior-analysis</span>
                         <span class="tag">python</span>
+                        <span class="tag">pytorch</span>
                     </div>
                 </a>
-                <a href="projects/oraculus/" class="card purple">
-                    <div class="card-header">
-                        <div class="card-icon purple">🔮</div>
-                        <span class="card-badge badge-research">Pesquisa</span>
-                    </div>
+                <a href="projects/oraculus/" class="card">
+                    <div class="card-label">LLM · Predictive AI</div>
                     <h3>Oraculus</h3>
-                    <p>Motor preditivo baseado em modelos de linguagem para análise de tendências e geração de insights estratégicos em tempo real.</p>
+                    <p>
+                        Motor preditivo baseado em modelos de linguagem para análise de
+                        tendências e geração de insights estratégicos em tempo real.
+                    </p>
                     <div class="card-tags">
-                        <span class="tag">llm</span>
-                        <span class="tag">predictions</span>
+                        <span class="tag">langchain</span>
+                        <span class="tag">gpt-4</span>
                         <span class="tag">nlp</span>
                     </div>
                 </a>
-                <a href="projects/experiments/" class="card emerald">
-                    <div class="card-header">
-                        <div class="card-icon emerald">🧪</div>
-                        <span class="card-badge badge-new">Contínuo</span>
-                    </div>
+                <a href="projects/experiments/" class="card">
+                    <div class="card-label">Research · Experimental</div>
                     <h3>Experimentos de IA</h3>
-                    <p>Laboratório de experimentação com modelos generativos, fine-tuning, prompt engineering e técnicas avançadas de IA.</p>
+                    <p>
+                        Laboratório de experimentação contínua com modelos generativos,
+                        fine-tuning, prompt engineering e técnicas avançadas de IA.
+                    </p>
                     <div class="card-tags">
                         <span class="tag">generative-ai</span>
                         <span class="tag">fine-tuning</span>
                         <span class="tag">research</span>
                     </div>
                 </a>
-                <a href="projects/ai-tools/" class="card amber">
-                    <div class="card-header">
-                        <div class="card-icon amber">⚙️</div>
-                        <span class="card-badge badge-active">Ativo</span>
-                    </div>
-                    <h3>AI Tools</h3>
-                    <p>Coleção de ferramentas e utilitários baseados em IA para automação, análise de dados e produtividade.</p>
+                <a href="projects/ai-tools/" class="card">
+                    <div class="card-label">Automação · Ferramentas</div>
+                    <h3>Automação de Operações</h3>
+                    <p>
+                        Coleção de ferramentas e utilitários baseados em IA para automação
+                        de processos, análise de dados e produtividade.
+                    </p>
                     <div class="card-tags">
-                        <span class="tag">automation</span>
                         <span class="tag">n8n</span>
-                        <span class="tag">tools</span>
+                        <span class="tag">apis</span>
+                        <span class="tag">automation</span>
                     </div>
                 </a>
             </div>
         </section>
 
-        <!-- Datasets Section -->
-        <section class="section animate-in" id="datasets">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="section-icon purple">📊</div>
-                    <h2>Datasets</h2>
-                </div>
-                <a href="datasets/" class="section-link">Ver todos →</a>
-            </div>
-            <div class="list-grid">
-                <a href="datasets/" class="list-card">
-                    <div class="list-card-icon" style="background: rgba(139, 92, 246, 0.1)">🧠</div>
-                    <div class="list-card-content">
+        <!-- Datasets -->
+        <section class="section fade-in" id="datasets">
+            <div class="section-label">// Dados</div>
+            <h2 class="section-title">Datasets</h2>
+            <div class="list-section">
+                <a href="datasets/" class="list-item">
+                    <div class="list-item-content">
                         <h3>Modelos Comportamentais</h3>
                         <p>Datasets estruturados para análise de padrões comportamentais e predição de tendências</p>
                     </div>
-                    <span class="list-card-arrow">→</span>
+                    <div class="list-item-meta">CSV · JSON</div>
+                    <span class="list-item-arrow">→</span>
                 </a>
-                <a href="datasets/" class="list-card">
-                    <div class="list-card-icon" style="background: rgba(79, 140, 255, 0.1)">📈</div>
-                    <div class="list-card-content">
+                <a href="datasets/" class="list-item">
+                    <div class="list-item-content">
                         <h3>Dados de Engajamento</h3>
-                        <p>Métricas, scores e padrões de interação em plataformas sociais e profissionais</p>
+                        <p>Métricas, scores e padrões de interação em plataformas profissionais</p>
                     </div>
-                    <span class="list-card-arrow">→</span>
+                    <div class="list-item-meta">JSON · Parquet</div>
+                    <span class="list-item-arrow">→</span>
                 </a>
             </div>
         </section>
 
-        <!-- Tools Section -->
-        <section class="section animate-in" id="tools">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="section-icon emerald">🛠️</div>
-                    <h2>Ferramentas</h2>
+        <!-- Highlight Section -->
+        <div class="highlight-section fade-in">
+            <div class="highlight-text">
+                <h2>Dados frios,<br>decisões <em>humanas.</em></h2>
+                <p>
+                    A combinação entre análise rigorosa de dados e compreensão humana
+                    transforma números em estratégia e percepção em ação.
+                    Cada projeto neste laboratório reflete essa filosofia.
+                </p>
+            </div>
+            <div class="highlight-features">
+                <div class="feature-item">
+                    <h4>Diagnóstico com inteligência</h4>
+                    <p>Análise de contexto antes de qualquer decisão.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>IA para humanos, não o contrário</h4>
+                    <p>Construindo ferramentas que amplificam capacidade, não substituem.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Processo iterativo como cultura</h4>
+                    <p>Testa, aprende, refina — sem atalhos.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Em público por escolha</h4>
+                    <p>Se 1% do resultado for útil para alguém, já valeu.</p>
                 </div>
             </div>
-            <div class="tools-grid">
-                <a href="demos/" class="tool-card">
-                    <span class="tool-icon">🔍</span>
-                    <div>
-                        <h4>Diagnósticos</h4>
-                        <p>Análise e validação de modelos</p>
-                    </div>
-                </a>
-                <a href="demos/" class="tool-card">
-                    <span class="tool-icon">📐</span>
-                    <div>
-                        <h4>Utilitários</h4>
-                        <p>Scripts e ferramentas auxiliares</p>
-                    </div>
-                </a>
-                <a href="demos/" class="tool-card">
-                    <span class="tool-icon">🤖</span>
-                    <div>
-                        <h4>Automação</h4>
-                        <p>Workflows e pipelines de IA</p>
-                    </div>
-                </a>
-                <a href="demos/" class="tool-card">
-                    <span class="tool-icon">📊</span>
-                    <div>
-                        <h4>Visualização</h4>
-                        <p>Dashboards e gráficos interativos</p>
-                    </div>
-                </a>
+        </div>
+
+        <!-- Tools -->
+        <section class="section fade-in" id="tools">
+            <div class="section-label">// Ferramentas</div>
+            <h2 class="section-title">Utilitários</h2>
+            <div class="grid-3">
+                <div class="tool-card">
+                    <div class="tool-icon">🤖</div>
+                    <h4>Content Agent</h4>
+                    <p>Geração de conteúdo com persona e contexto</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h4>Data Analyzer</h4>
+                    <p>Análise automatizada de dados</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔄</div>
+                    <h4>Workflow Engine</h4>
+                    <p>Motor de automação n8n</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📧</div>
+                    <h4>Smart Responder</h4>
+                    <p>Respostas automáticas inteligentes</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <h4>Research Bot</h4>
+                    <p>Pesquisa automatizada na web</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <h4>Doc Generator</h4>
+                    <p>Geração de documentação técnica</p>
+                </div>
             </div>
         </section>
 
-        <!-- Articles Section -->
-        <section class="section animate-in" id="articles">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="section-icon amber">📝</div>
-                    <h2>Artigos & Pesquisa</h2>
-                </div>
-                <a href="articles/" class="section-link">Ver todos →</a>
-            </div>
-            <div class="list-grid">
-                <a href="articles/construindo-agentes-ia-autonomos.html" class="list-card">
-                    <div class="list-card-icon" style="background: rgba(245, 158, 11, 0.1)">📄</div>
-                    <div class="list-card-content">
+        <!-- Articles -->
+        <section class="section fade-in" id="articles">
+            <div class="section-label">// Pesquisa</div>
+            <h2 class="section-title">Artigos</h2>
+            <div class="list-section">
+                <a href="articles/construindo-agentes-ia-autonomos.html" class="list-item">
+                    <div class="list-item-content">
                         <h3>Construindo Agentes de IA Autônomos</h3>
-                        <p>Notas de pesquisa sobre arquitetura de agentes, memória e aprendizado contínuo</p>
+                        <p>Arquitetura de agentes, memória persistente e aprendizado contínuo</p>
                     </div>
-                    <span class="list-card-arrow">→</span>
+                    <div class="list-item-meta">09 Mar 2026 · 8 min</div>
+                    <span class="list-item-arrow">→</span>
                 </a>
-                <a href="articles/" class="list-card">
-                    <div class="list-card-icon" style="background: rgba(244, 63, 94, 0.1)">📑</div>
-                    <div class="list-card-content">
+                <a href="articles/" class="list-item">
+                    <div class="list-item-content">
                         <h3>Notas de Pesquisa</h3>
                         <p>Anotações, descobertas e insights dos experimentos em andamento</p>
                     </div>
-                    <span class="list-card-arrow">→</span>
+                    <div class="list-item-meta">Em progresso</div>
+                    <span class="list-item-arrow">→</span>
                 </a>
             </div>
         </section>
 
-        <!-- Demos Section -->
-        <section class="section animate-in" id="demos">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="section-icon blue">🎮</div>
-                    <h2>Demos</h2>
-                </div>
+        <!-- CTA -->
+        <div class="cta-section fade-in">
+            <h2>Vamos conversar?</h2>
+            <p>
+                Se você trabalha com dados, IA ou estratégia digital,
+                vamos trocar ideias e explorar como unir forças — ou
+                apenas conversar sobre o ofício.
+            </p>
+            <div class="cta-actions">
+                <a href="mailto:contato@ederturini.com.br" class="btn btn-gold">contato@ederturini.com.br</a>
+                <a href="https://linkedin.com/in/ederturini" class="btn btn-ghost" target="_blank">LinkedIn</a>
             </div>
-            <div class="grid">
-                <div class="card blue" style="opacity: 0.6;">
-                    <div class="card-header">
-                        <div class="card-icon blue">🚀</div>
-                        <span class="card-badge badge-new">Em breve</span>
-                    </div>
-                    <h3>Demos Interativas</h3>
-                    <p>Demonstrações ao vivo dos projetos com visualizações interativas e interfaces experimentais.</p>
-                </div>
-            </div>
-        </section>
+        </div>
+
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container footer-inner">
-            <span class="footer-text">© 2026 Eder Turini. Laboratório técnico público.</span>
+            <span class="footer-text">© 2026 Eder Turini</span>
             <div class="footer-links">
                 <a href="https://github.com/ederturini" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/ederturini" target="_blank">LinkedIn</a>
-                <a href="https://ederturini.com.br" target="_blank">Website</a>
+                <a href="https://ederturini.com.br">ederturini.com.br</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll Animations -->
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1018,11 +897,10 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1034,4 +912,5 @@
         });
     </script>
 </body>
+
 </html>
