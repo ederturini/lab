@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SenseLens — Eder Turini Lab</title>
+    <meta name="description"
+        content="SenseLens: Sistema de análise sensorial e visual usando IA para interpretação de dados comportamentais.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --border: #1e1e2e;
+            --border-hover: #2a2a3e;
+            --text-primary: #e8e8f0;
+            --text-secondary: #8888a0;
+            --text-muted: #55556a;
+            --accent-blue: #4f8cff;
+            --accent-purple: #8b5cf6;
+            --accent-emerald: #10b981;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(79, 140, 255, 0.04) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px 0;
+            font-size: 13px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-blue);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 8px;
+        }
+
+        /* Project Header */
+        .project-header {
+            padding: 40px 0 60px;
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(79, 140, 255, 0.08);
+            border: 1px solid rgba(79, 140, 255, 0.15);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 24px;
+        }
+
+        .project-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .project-header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* Meta */
+        .meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 32px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item {
+            font-size: 13px;
+        }
+
+        .meta-label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        /* Content */
+        .content {
+            padding: 48px 0;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            margin-top: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .content ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .content li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        /* Code block */
+        .code-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-secondary);
+            overflow-x: auto;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-hover);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">Lab</a>
+            <span>/</span>
+            <a href="/projects/">Projetos</a>
+            <span>/</span>
+            <a href="#">SenseLens</a>
+        </nav>
+
+        <div class="project-header">
+            <div class="project-badge">👁️ Computer Vision + AI</div>
+            <h1>SenseLens</h1>
+            <p class="subtitle">
+                Sistema de análise sensorial e visual usando modelos de IA para interpretação
+                de dados comportamentais e identificação de padrões complexos em tempo real.
+            </p>
+            <div class="meta">
+                <div class="meta-item">
+                    <div class="meta-label">Status</div>
+                    <div class="meta-value" style="color: var(--accent-emerald);">● Ativo</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Stack</div>
+                    <div class="meta-value">Python · OpenCV · PyTorch</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Versão</div>
+                    <div class="meta-value">v0.1.0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Visão Geral</h2>
+            <p>
+                O SenseLens é um framework de análise visual que combina técnicas de computer vision
+                com modelos de linguagem para extrair insights de dados sensoriais. O sistema processa
+                inputs visuais e os transforma em interpretações estruturadas.
+            </p>
+
+            <h2>Funcionalidades</h2>
+            <ul>
+                <li>Análise de padrões comportamentais em vídeo</li>
+                <li>Classificação de expressões e microexpressões</li>
+                <li>Pipeline de processamento em tempo real</li>
+                <li>Integração com modelos multimodais (GPT-4V, Gemini)</li>
+                <li>Dashboard de visualização de métricas</li>
+            </ul>
+
+            <h2>Arquitetura</h2>
+            <div class="code-block">
+                SenseLens/
+                ├── core/
+                │ ├── vision_engine.py # Motor de processamento visual
+                │ ├── behavior_analyzer.py # Análise comportamental
+                │ └── pattern_detector.py # Detecção de padrões
+                ├── models/
+                │ ├── emotion_classifier/ # Classificador de emoções
+                │ └── attention_tracker/ # Rastreamento de atenção
+                ├── api/
+                │ └── endpoints.py # API REST
+                └── dashboard/
+                └── app.py # Interface de visualização
+            </div>
+
+            <h2>Próximos Passos</h2>
+            <ul>
+                <li>Implementar pipeline de fine-tuning para domínio específico</li>
+                <li>Adicionar suporte a análise de áudio multimodal</li>
+                <li>Criar dataset anotado para benchmark interno</li>
+                <li>Publicar paper técnico com resultados</li>
+            </ul>
+
+            <a href="/" class="back-link">← Voltar ao Lab</a>
+        </div>
+
+        <footer>
+            <span class="footer-text">© 2026 Eder Turini Lab</span>
+        </footer>
+    </div>
+</body>
+
+</html>

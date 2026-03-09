@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oraculus — Eder Turini Lab</title>
+    <meta name="description"
+        content="Oraculus: Motor preditivo baseado em LLMs para análise de tendências e geração de insights estratégicos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --border: #1e1e2e;
+            --border-hover: #2a2a3e;
+            --text-primary: #e8e8f0;
+            --text-secondary: #8888a0;
+            --text-muted: #55556a;
+            --accent-blue: #4f8cff;
+            --accent-purple: #8b5cf6;
+            --accent-emerald: #10b981;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.04) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(79, 140, 255, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .breadcrumb {
+            padding: 20px 0;
+            font-size: 13px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-purple);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 8px;
+        }
+
+        .project-header {
+            padding: 40px 0 60px;
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-bottom: 24px;
+        }
+
+        .project-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .project-header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 32px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item {
+            font-size: 13px;
+        }
+
+        .meta-label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        .content {
+            padding: 48px 0;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            margin-top: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .content ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .content li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+        }
+
+        .code-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-secondary);
+            overflow-x: auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-hover);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">Lab</a><span>/</span><a href="/projects/">Projetos</a><span>/</span><a href="#">Oraculus</a>
+        </nav>
+        <div class="project-header">
+            <div class="project-badge">🔮 LLM + Predictive AI</div>
+            <h1>Oraculus</h1>
+            <p class="subtitle">
+                Motor preditivo baseado em modelos de linguagem para análise de tendências,
+                geração de insights estratégicos e previsão de padrões de mercado em tempo real.
+            </p>
+            <div class="meta">
+                <div class="meta-item">
+                    <div class="meta-label">Status</div>
+                    <div class="meta-value" style="color: var(--accent-purple);">◉ Pesquisa</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Stack</div>
+                    <div class="meta-value">Python · LangChain · GPT-4</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Versão</div>
+                    <div class="meta-value">v0.2.0</div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Visão Geral</h2>
+            <p>O Oraculus é um sistema de inteligência preditiva que utiliza modelos de linguagem avançados combinados
+                com dados estruturados para gerar previsões e insights estratégicos. O motor analisa padrões históricos,
+                tendências de mercado e sinais comportamentais para antecipar movimentos.</p>
+
+            <h2>Capacidades</h2>
+            <ul>
+                <li>Análise de tendências com janelas temporais adaptativas</li>
+                <li>Geração de relatórios preditivos automatizados</li>
+                <li>Sistema de memória contextual para aprendizado contínuo</li>
+                <li>Pipeline de dados multi-source (APIs, scraping, databases)</li>
+                <li>Módulo contrarian para perspectivas alternativas</li>
+                <li>Score de confiança por predição</li>
+            </ul>
+
+            <h2>Arquitetura</h2>
+            <div class="code-block">
+                Oraculus/
+                ├── agents/
+                │ ├── predictor.py # Agente preditivo principal
+                │ ├── contrarian.py # Módulo contrarian
+                │ └── memory_agent.py # Gestão de memória contextual
+                ├── data/
+                │ ├── collectors/ # Coletores de dados
+                │ ├── processors/ # Processamento e limpeza
+                │ └── storage/ # Persistência (SQL + vector DB)
+                ├── models/
+                │ ├── trend_analyzer.py # Análise de tendências
+                │ └── confidence_scorer.py # Score de confiança
+                └── reports/
+                └── generator.py # Geração de relatórios
+            </div>
+
+            <h2>Roadmap</h2>
+            <ul>
+                <li>Integrar fontes de dados em tempo real (RSS, APIs financeiras)</li>
+                <li>Implementar backtesting automatizado de predições</li>
+                <li>Criar dashboard interativo de acompanhamento</li>
+                <li>Adicionar módulo multi-agente com debate entre perspectivas</li>
+            </ul>
+
+            <a href="/" class="back-link">← Voltar ao Lab</a>
+        </div>
+        <footer><span class="footer-text">© 2026 Eder Turini Lab</span></footer>
+    </div>
+</body>
+
+</html>

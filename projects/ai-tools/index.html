@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools — Eder Turini Lab</title>
+    <meta name="description"
+        content="Coleção de ferramentas e utilitários de IA para automação, análise e produtividade.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #16161f;
+            --border: #1e1e2e;
+            --border-hover: #2a2a3e;
+            --text-primary: #e8e8f0;
+            --text-secondary: #8888a0;
+            --text-muted: #55556a;
+            --accent-blue: #4f8cff;
+            --accent-amber: #f59e0b;
+            --accent-emerald: #10b981;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image: radial-gradient(circle at 40% 30%, rgba(245, 158, 11, 0.04) 0%, transparent 50%), radial-gradient(circle at 60% 70%, rgba(79, 140, 255, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .breadcrumb {
+            padding: 20px 0;
+            font-size: 13px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-amber);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 8px;
+        }
+
+        .project-header {
+            padding: 40px 0 60px;
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-amber);
+            margin-bottom: 24px;
+        }
+
+        .project-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .project-header .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 32px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item {
+            font-size: 13px;
+        }
+
+        .meta-label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: var(--font-mono);
+        }
+
+        .content {
+            padding: 48px 0;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            margin-top: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .tool-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .tool-item:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .tool-item .icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .tool-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .tool-item p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-hover);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="/">Lab</a><span>/</span><a href="/projects/">Projetos</a><span>/</span><a href="#">AI Tools</a>
+        </nav>
+        <div class="project-header">
+            <div class="project-badge">⚙️ Automação + IA</div>
+            <h1>AI Tools</h1>
+            <p class="subtitle">
+                Coleção de ferramentas, scripts e utilitários baseados em inteligência artificial
+                para automação de processos, análise de dados e produtividade.
+            </p>
+            <div class="meta">
+                <div class="meta-item">
+                    <div class="meta-label">Status</div>
+                    <div class="meta-value" style="color: var(--accent-emerald);">● Ativo</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Stack</div>
+                    <div class="meta-value">n8n · Python · APIs</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tools</div>
+                    <div class="meta-value">8+</div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Ferramentas Disponíveis</h2>
+            <div class="tool-grid">
+                <div class="tool-item">
+                    <div class="icon">🤖</div>
+                    <h4>Content Agent</h4>
+                    <p>Agente de geração de conteúdo</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">📊</div>
+                    <h4>Data Analyzer</h4>
+                    <p>Análise automatizada de dados</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">🔄</div>
+                    <h4>Workflow Engine</h4>
+                    <p>Motor de automação n8n</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">📧</div>
+                    <h4>Smart Responder</h4>
+                    <p>Respostas automáticas inteligentes</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">🔍</div>
+                    <h4>Research Bot</h4>
+                    <p>Pesquisa automatizada na web</p>
+                </div>
+                <div class="tool-item">
+                    <div class="icon">📝</div>
+                    <h4>Doc Generator</h4>
+                    <p>Geração de documentação</p>
+                </div>
+            </div>
+
+            <h2>Sobre</h2>
+            <p>
+                Cada ferramenta é construída como um módulo independente, podendo ser utilizada
+                isoladamente ou integrada em pipelines maiores. A maioria opera via n8n workflows
+                ou scripts Python com interfaces simples.
+            </p>
+
+            <a href="/" class="back-link">← Voltar ao Lab</a>
+        </div>
+        <footer><span class="footer-text">© 2026 Eder Turini Lab</span></footer>
+    </div>
+</body>
+
+</html>
